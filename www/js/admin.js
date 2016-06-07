@@ -141,7 +141,7 @@ $(document).ready(function () {
                             $(this).dialog('close');
                             if (cb) cb(id);
                         }
-                    }
+                    };
                 }
                 $dialogConfirm.dialog('option', 'buttons', buttons);
             }
@@ -452,7 +452,7 @@ $(document).ready(function () {
 
     var children =              {};
     //var updateTimers =          {};
-    
+
     var cmdCallback =           null;
     var stdout;
     var activeCmdId =           null;
@@ -654,7 +654,7 @@ $(document).ready(function () {
                     $(this).appendTo($('body'));
                     var $t = $(this);
                     setTimeout(function () {
-                        $t.hide()
+                        $t.hide();
                     }, 100);
                 }
                 showTabs += '<option value="' + $(this).attr('id') + '">' + _($(this).data('name')) + '</option>';
@@ -760,7 +760,7 @@ $(document).ready(function () {
             var countLink = 0;
 
             // If some objects cannot be read => go by timeout
-            var loadTimeout = setTimeout(function() {
+            var loadTimeout = setTimeout(function () {
                 loadTimeout = null;
                 initHtmlTabs(showTabs);
             }, 1000);
@@ -888,7 +888,8 @@ $(document).ready(function () {
                             tabs.hosts.list.push({name: obj.common.hostname, address: addr, id: obj._id});
                         } else {
                             tabs.hosts.list.push({name: obj.common.hostname, address: '127.0.0.1', id: obj._id});
-                        }                    }
+                        }
+                    }
                     //treeInsert(id);
                 }
                 main.objectsLoaded = true;
@@ -1017,7 +1018,7 @@ $(document).ready(function () {
         tabs.users.objectChange(id, obj);
     }
 
-    function monitor () {
+    function monitor() {
         if (main._timer) return;
         var ts = (new Date()).getTime();
         if (ts - main._lastTimer > 30000) {
@@ -1226,6 +1227,7 @@ $(document).ready(function () {
                                 tabs.groups.prepare();
                                 tabs.enums.prepare();
                                 tabs.objects.prepareHistory();
+                                tabs.objects.prepareSyncClient();
                                 tabs.events.prepare();
                                 main.systemDialog.prepare();
                                 resizeGrids();
@@ -1254,7 +1256,7 @@ $(document).ready(function () {
         setTimeout(function () {
             tabs.adapters.init(true);
         }, 0);
-    })
+    });
 
     main.socket.on('reauthenticate', function () {
         location.reload();
