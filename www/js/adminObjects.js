@@ -500,9 +500,8 @@ function Objects(main) {
                                     if (main.objects[id].common.history.enabled !== undefined) {
                                         main.objects[id].common.history = main.objects[id].common.history.enabled ? {'history.0': main.objects[id].common.history} : {};
                                     }
-                                    for (var h in main.objects[id].common.history) {
+                                    if (Object.keys(main.objects[id].common.history).length) {
                                         enabled = true;
-                                        break;
                                     }
                                 }
                                 if (enabled) {
@@ -532,9 +531,8 @@ function Objects(main) {
                                 // Check if sync-client enabled
                                 var enabled = false;
                                 if (main.objects[id] && main.objects[id].common && main.objects[id].common.sync) {
-                                    for (var h in main.objects[id].common.sync) {
+                                    if (Object.keys(main.objects[id].common.sync).length) {
                                         enabled = true;
-                                        break;
                                     }
                                 }
                                 if (enabled) {
